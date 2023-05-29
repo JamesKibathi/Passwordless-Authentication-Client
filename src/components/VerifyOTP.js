@@ -7,10 +7,10 @@ function VerifyOTP(){
        <div className='container'>
             <input
             type = "text"
-            placeholder = "OTP"
+            placeholder = "Enter OTP Code Received"
             name ="otp"
             />
-            <button type="submit">Verify OTP</button>
+            <button type="submit">Verify</button>
             </div>
         </form>
     </div>    
