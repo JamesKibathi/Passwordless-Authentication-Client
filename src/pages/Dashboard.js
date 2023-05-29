@@ -1,7 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./dashboard.css"
 function Dashboard() {
   const navigate = useNavigate()
+//   const search = useLocation().search
+//   const browserToken = search.split("=")[1]
+// if (browserToken){
+//   console.log("i have token")
+// }else{
+//   console.log("i dont have")
+// }
+
+
+  // console.log(browserToken)
   const token = localStorage.getItem("jwtToken")
   console.log(token)
   if (token) {
@@ -16,7 +26,7 @@ function Dashboard() {
 
         <button onClick={() => {
           navigate("/")
-          localStorage.clear()
+          return localStorage.clear()
         }} className="logout-button">Logout</button>
       </div>
     );
