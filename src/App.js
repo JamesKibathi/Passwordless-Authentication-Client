@@ -5,6 +5,7 @@ import Login from './components/Login';
 
 import { Routes, Route } from 'react-router-dom';
 import Signup from './components/Signup';
+import VerifyOTP from './components/VerifyOTP';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path ="register" element={<Signup/>}/>
+        <Route path="verify_otp" element={<VerifyOTP/>}/>
        
       </Routes>
 
