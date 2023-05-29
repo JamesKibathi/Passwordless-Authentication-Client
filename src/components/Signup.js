@@ -1,6 +1,7 @@
+import './signup.css'
 function Signup(){
     return(
-        <div>
+        <div className="signup-body">
         <h1>Create Account</h1>
         <form>
         <div className="container">
