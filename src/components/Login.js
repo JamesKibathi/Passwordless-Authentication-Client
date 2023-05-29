@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import "./forms.css"
+import "./login.css"
 function Login(){
     return(
         <div className="login-body">
