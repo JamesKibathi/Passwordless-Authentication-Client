@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
+import "./forms.css"
 function Login(){
     return(
-        <div>
+        <div className="login-body">
         <h2> Please Login to access your Account</h2>
         <form>
+        <div className="container">
         <input    
           type="text"
           placeholder="Email or Phone"
@@ -11,7 +13,8 @@ function Login(){
     
         />
         <button type ="submit">Generate OTP</button>
-        
+       
+      </div>  
         </form>
         <p>
         Don't have an account?
