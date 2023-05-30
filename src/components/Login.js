@@ -68,7 +68,7 @@ function Login(){
         <p>
         Don't have an account?
           <span>
-          <Link to="register">Sign up here</Link>
+          <Link to="/register">Sign up here</Link>
           </span>
         </p>
        {message && <p>{message}</p>}
