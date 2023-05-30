@@ -6,28 +6,29 @@ import { useEffect, useState } from "react";
 function Dashboard() {
   const navigate = useNavigate()
   const location = useLocation()
-  const [decodedToken,setDecodedToken]  = useState(undefined)
+  const [decodedToken, setDecodedToken] = useState(undefined)
+  const [showWelcome, setShowWelcome] = useState(true);
   const queryParams = new URLSearchParams(location.search);
   const queryToken = queryParams.get("token");
 
 
-useEffect(()=>{
+  useEffect(() => {
 
-  try {
-    const token = jwt_decode(queryToken);
-    
-    if (token){
-      console.log("valid token")
-      setDecodedToken(token)
-      return
+    try {
+      const token = jwt_decode(queryToken);
+
+      if (token) {
+        console.log("valid token")
+        setDecodedToken(token)
+        return
+      }
+      console.log("invalid token")
+    } catch (error) {
+      console.log(error.message)
     }
-    console.log("invalid token")
-  } catch (error) {
-    console.log(error.message)
-  }
 
-console.log(decodedToken)
-},[decodedToken])
+    console.log(decodedToken)
+  }, [decodedToken])
 
 
   const token = localStorage.getItem("jwtToken")
@@ -36,11 +37,12 @@ console.log(decodedToken)
   if (token) {
     return (
       <div className="dashboard-container">
-
-        <div className="welcome-message">
-          <h2>Welcome, James!</h2>
-          <button>Hide Welcome Message</button>
-        </div>
+        {showWelcome && (
+          <div className="welcome-message">
+            <h2>Hello & Welcome!</h2>
+            <button onClick={() => setShowWelcome(false)}>Hide Welcome Message</button>
+          </div>
+        )}
 
 
         <button onClick={() => {
@@ -49,15 +51,15 @@ console.log(decodedToken)
         }} className="logout-button">Logout</button>
       </div>
     );
-  } else if(decodedToken) {
+  } else if (decodedToken) {
     return (
       <div className="dashboard-container">
-
-        <div className="welcome-message">
-          <h2>Welcome, James!</h2>
-          <button>Hide Welcome Message</button>
-        </div>
-
+        {showWelcome && (
+          <div className="welcome-message">
+            <h2>Hello & Welcome!</h2>
+            <button onClick={() => setShowWelcome(false)}>Hide Welcome Message</button>
+          </div>
+        )}
 
         <button onClick={() => {
           navigate("/")
@@ -65,8 +67,8 @@ console.log(decodedToken)
         }} className="logout-button">Logout</button>
       </div>
     );
-    
-  }else{
+
+  } else {
     return <div>Unauthorized Access!!</div>
   }
 
